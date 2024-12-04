@@ -1,74 +1,79 @@
-﻿// using System.Text;
+﻿
+using System.Text.RegularExpressions;
 
-// namespace AdventOfCode2024;
+namespace AdventOfCode2024;
 
-// public class Day_03 : BaseDay
-// {
+public class Day_03 : BaseDay
+{
+    string file;
+    List<string> mulMatches = new();
+    List<string> mulMatches2 = new();
+    public Day_03()
+    {
+        file = File.ReadAllText(InputFilePath);
+        // file = "xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
 
-//     private readonly string _input;
+        string pattern = @"mul\((\d+),(\d+)\)";
+        Regex regex = new Regex(pattern);
+        var matches = regex.Matches(file);
 
-//     public Day_03()
-//     {
-//         _input = File.ReadAllText(InputFilePath);
-//     }
+        Console.WriteLine("Found matches:");
+        foreach (Match match in matches)
+        {
+            Console.WriteLine(match.Value);
+            mulMatches.Add(getMulValues(match.Value));
+        }
 
-//     int priority(char unit)
-//     {
-//         if (64 + 1 <= unit && unit <= 64 + 26)
-//         {
-//             return 26 + unit - 64;
-//         }
-//         else if (96 + 1 <= unit && unit <= 96 + 26)
-//         {
-//             return unit - 96;
-//         }
-//         else
-//         {
-//             return 0;
-//         }
-//     }
+        string pattern2 = @"mul\((\d+),(\d+)\)|do\(\)|don't\(\)";
+        Regex regex2 = new Regex(pattern2);
+        var matches2 = regex2.Matches(file);
 
+        Console.WriteLine("Found matches:");
+        var doMatches = true;
+        foreach (Match match in matches2)
+        {
+            Console.WriteLine(match.Value);
+            if (match.Value.Contains("do("))
+            {
+                doMatches = true;
+            }
+            else if (match.Value.Contains("don't("))
+            {
+                doMatches = false;
+            }
+        
+            if (doMatches && match.Value.Contains("mul"))
+            {
+                mulMatches2.Add(getMulValues(match.Value));
+            }
+        }
 
-//     public override ValueTask<string> Solve_1()
-//     {
-//         var data = _input.Split('\n')
-//             .Select(l =>
-//             {
-//                 return new List<byte[]> {
-//                    Encoding.ASCII.GetBytes(l.Substring(0, (l.Length / 2))),
-//                    Encoding.ASCII.GetBytes(l.Substring((l.Length / 2), (l.Length / 2)))
-//             };
-//             }).Select(s => s.Aggregate((a, b) => a.Intersect(b).ToArray())
-//             .Select(a => Convert.ToChar(a))
-//             .Select(v => priority(v))
-            
-//         ).Aggregate(0, (val, item) => val + item.ToList()[0]);
+    }
 
-//         return new(data.ToString());
-//     }
+    public string getMulValues(string match)
+    {
+        return match[4..^1];
+    }
 
-//     public override ValueTask<string> Solve_2()
-//     {
+    public override ValueTask<string> Solve_1()
+    {
+        int result = 0;
+        foreach (var item in mulMatches)
+        {
+            var values = item.Split(',');
+            result += int.Parse(values[0]) * int.Parse(values[1]);
+        }
+        return new(result.ToString());
+    }
 
-
-//         var data = _input.Split('\n')
-//             .SkipWhile(item => true)
-//             .Take(3).Select(t => Encoding.ASCII.GetBytes(t))
-//             .Skip(3);
-// //    .Select(l =>
-// //    {
-// //        return new List<byte[]> {
-// //                   Encoding.ASCII.GetBytes(l.Substring(0, (l.Length / 2))),
-// //                   Encoding.ASCII.GetBytes(l.Substring((l.Length / 2), (l.Length / 2)))
-// //    };
-// //    }).Select(s => s.Aggregate((a, b) => a.Intersect(b).ToArray())
-// //    .Select(a => Convert.ToChar(a))
-// //    .Select(v => priority(v))
-
-// //).Aggregate(0, (val, item) => val + item.ToList()[0]);
-
-//         return new("not implemented");
-//     }
-
-
-// }
+    public override ValueTask<string> Solve_2()
+    {
+        int result = 0;
+        foreach (var item in mulMatches2)
+        {
+            var values = item.Split(',');
+            result += int.Parse(values[0]) * int.Parse(values[1]);
+        }
+        return new(result.ToString());
+    }
+}
