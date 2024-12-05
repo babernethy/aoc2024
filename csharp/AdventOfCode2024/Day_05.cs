@@ -95,16 +95,15 @@ public class Day_05 : BaseDay
             bool correct = true;
             foreach (var page in update)
             {
-                if (pagesImBefore.ContainsKey(page))
+
+                var pagesImAfter = GetPagesInUpdateIamAfter(page, update);
+                foreach (var afterPage in pagesImAfter)
                 {
-                    var pagesBefore = GetPagesInUpdateIamAfter(page, update);
-                    foreach (var pageImBefore in pagesBefore)
+                    if (pagesImBefore.ContainsKey(afterPage) && pagesImBefore[afterPage].Contains(page))
                     {
-                        if (!pagesImBefore[page].Contains(pageImBefore))
-                        {
-                            correct = false;
-                            break;
-                        }
+                        Console.WriteLine($"Page {afterPage} is after {page} in update {update}");
+                        correct = false;
+                        break;
                     }
                     //var pagesAfter = GetPagesInUpdateIamBefore(page, update);
                 }
@@ -123,7 +122,7 @@ public class Day_05 : BaseDay
     public override ValueTask<string> Solve_2()
     {
 
-      return new("not implemented");
+        return new("not implemented");
     }
 
 
