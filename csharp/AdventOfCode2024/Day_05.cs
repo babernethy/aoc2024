@@ -101,7 +101,7 @@ public class Day_05 : BaseDay
                 {
                     if (pagesImBefore.ContainsKey(afterPage) && pagesImBefore[afterPage].Contains(page))
                     {
-                        Console.WriteLine($"Page {afterPage} is after {page} in update {update}");
+                      //  Console.WriteLine($"Page {afterPage} is after {page} in update {update}");
                         correct = false;
                         break;
                     }

@@ -138,7 +138,7 @@ public class Day_07 : BaseDay
             if (EquationValid(equation, operations))
             {
                 numValid+=equation.answer;
-                Console.WriteLine($"Valid: {equation.answer.ToString()}");
+              //  Console.WriteLine($"Valid: {equation.answer.ToString()}");
             }
         }
 

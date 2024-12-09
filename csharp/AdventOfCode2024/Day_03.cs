@@ -17,10 +17,10 @@ public class Day_03 : BaseDay
         Regex regex = new Regex(pattern);
         var matches = regex.Matches(file);
 
-        Console.WriteLine("Found matches:");
+       // Console.WriteLine("Found matches:");
         foreach (Match match in matches)
         {
-            Console.WriteLine(match.Value);
+        //    Console.WriteLine(match.Value);
             mulMatches.Add(getMulValues(match.Value));
         }
 
@@ -28,11 +28,11 @@ public class Day_03 : BaseDay
         Regex regex2 = new Regex(pattern2);
         var matches2 = regex2.Matches(file);
 
-        Console.WriteLine("Found matches:");
+      //  Console.WriteLine("Found matches:");
         var doMatches = true;
         foreach (Match match in matches2)
         {
-            Console.WriteLine(match.Value);
+           // Console.WriteLine(match.Value);
             if (match.Value.Contains("do("))
             {
                 doMatches = true;

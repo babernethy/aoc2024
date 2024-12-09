@@ -25,11 +25,11 @@ public class Day_01 : BaseDay
         {
             if (String.IsNullOrEmpty(line))
             {
-                Console.WriteLine($"Empty line {line}");
+               // Console.WriteLine($"Empty line {line}");
             }
             else
             {
-                Console.WriteLine(line);
+               // Console.WriteLine(line);
                 var parts = line.Split("   ");
                 if (int.TryParse(parts[0].Trim(), out col1Value))
                 {
@@ -50,7 +50,7 @@ public class Day_01 : BaseDay
         int totalDistance = 0;
         for (int i = 0; i < col1.Count; i++)
         {
-            Console.WriteLine($"{col1[i]} {col2[i]}");
+           // Console.WriteLine($"{col1[i]} {col2[i]}");
             totalDistance += Math.Abs(col1[i] - col2[i]);
         }
         return new(totalDistance.ToString());
@@ -66,7 +66,7 @@ public class Day_01 : BaseDay
         for (int i = 0; i < col1.Count; i++)
         {
             var count = CountOccurences(col2, col1[i]);
-            Console.WriteLine($"{col1[i]} {count}");
+            // Console.WriteLine($"{col1[i]} {count}");
             simscore += col1[i] * count;
         }
         return new(simscore.ToString());

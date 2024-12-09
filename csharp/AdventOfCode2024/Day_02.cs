@@ -25,7 +25,7 @@ public class Day_02 : BaseDay
         {
             if (String.IsNullOrEmpty(line))
             {
-                Console.WriteLine($"Empty line {line}");
+               // Console.WriteLine($"Empty line {line}");
             }
             else
             {
@@ -66,7 +66,7 @@ public class Day_02 : BaseDay
     {
         if (iteration > 1)
         {
-            Console.WriteLine($"[{iteration}] Iteration Unsafe");
+            // Console.WriteLine($"[{iteration}] Iteration Unsafe");
             return false;
         }
         var lastDiff = r[0] - r[1];
@@ -92,11 +92,11 @@ public class Day_02 : BaseDay
 
                 if (!iNewResult && !iPlusNewResult)
                 {
-                    Console.WriteLine($"[{iteration}] Really Not safe - {string.Join(" ", newList)} - {string.Join(" ", newList2)} - {lines[j]}\n-----------------");
+                    //Console.WriteLine($"[{iteration}] Really Not safe - {string.Join(" ", newList)} - {string.Join(" ", newList2)} - {lines[j]}\n-----------------");
                     return false;
                 }
 
-                Console.WriteLine($"!!! Safe with one removed - {iNewResult} {string.Join(" ", newList)} - {iPlusNewResult} {string.Join(" ", newList2)}");
+                // Console.WriteLine($"!!! Safe with one removed - {iNewResult} {string.Join(" ", newList)} - {iPlusNewResult} {string.Join(" ", newList2)}");
                 return true;
 
                 // return CheckIsSafe(j, newList, iteration + 1);
@@ -117,7 +117,7 @@ public class Day_02 : BaseDay
                 var diff = currValue - nextValue;
                 if (Math.Abs(diff) == 0 || Math.Abs(diff) > 3 || !IsSameDirection(diff, lastDiff))
                 {
-                    Console.WriteLine($"[{iteration}] Not safe {currValue} {nextValue} - {diff} {lastDiff} - {string.Join(" ", r)} - {lines[j]}");
+                   // Console.WriteLine($"[{iteration}] Not safe {currValue} {nextValue} - {diff} {lastDiff} - {string.Join(" ", r)} - {lines[j]}");
 
                     var newList = new List<int>(r);
                     newList.RemoveAt(i);
@@ -136,11 +136,11 @@ public class Day_02 : BaseDay
 
                     if (!iNewResult && !iPlusNewResult)
                     {
-                        Console.WriteLine($"[{iteration}] Really Not safe - {string.Join(" ", newList)} - {string.Join(" ", newList2)} - {lines[j]}\n-----------------");
+                      //  Console.WriteLine($"[{iteration}] Really Not safe - {string.Join(" ", newList)} - {string.Join(" ", newList2)} - {lines[j]}\n-----------------");
                         return false;
                     }
 
-                    Console.WriteLine($"!!! Safe with one removed - {iNewResult} {string.Join(" ", newList)} - {iPlusNewResult} {string.Join(" ", newList2)}");
+                  //  Console.WriteLine($"!!! Safe with one removed - {iNewResult} {string.Join(" ", newList)} - {iPlusNewResult} {string.Join(" ", newList2)}");
                     return true;
 
                     // return iNewResult || iPlusNewResult;
@@ -148,14 +148,14 @@ public class Day_02 : BaseDay
                 // lastValue = currValue;
             }
         }
-        Console.WriteLine("!!! Safe report");
+       // Console.WriteLine("!!! Safe report");
         return true;
     }
 
 
     public override ValueTask<string> Solve_2()
     {
-        Console.WriteLine("\n\nSolve 2 ----------------------------");
+      //  Console.WriteLine("\n\nSolve 2 ----------------------------");
         int safeReports = 0;
         for (int j = 0; j < reports.Count; j++)
         {

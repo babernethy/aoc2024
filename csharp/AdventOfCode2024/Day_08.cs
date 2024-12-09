@@ -75,7 +75,7 @@ public class Day_08 : BaseDay
                 }
             }
         }
-        Console.WriteLine(MatrixToString());
+       // Console.WriteLine(MatrixToString());
 
         return new(countAntinodes.ToString());
     }
@@ -186,7 +186,7 @@ public class Day_08 : BaseDay
                 }
             }
         }
-        Console.WriteLine(MatrixToString());
+       // Console.WriteLine(MatrixToString());
 
         //count all char values in matrix that are not '.'
         var matrixCount = 0;

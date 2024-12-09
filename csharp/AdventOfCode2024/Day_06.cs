@@ -221,9 +221,9 @@ public class Day_06 : BaseDay
                 {
                     if (visited[guardLocation].Contains(guardDirection))
                     {
-                        Console.WriteLine($"\n-----------\nLoop detected with obstruction at {node.x} {node.y}");
-                        Console.WriteLine(PartOneMatrixToString());
-                        Console.WriteLine(MatrixToString());
+                     //   Console.WriteLine($"\n-----------\nLoop detected with obstruction at {node.x} {node.y}");
+                      //  Console.WriteLine(PartOneMatrixToString());
+                      //  Console.WriteLine(MatrixToString());
                         shouldContinue = false; // we're looping
                         loopCount++;
                         break;

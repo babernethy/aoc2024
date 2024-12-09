@@ -62,7 +62,7 @@ MXMXAXMASX";
                     int matches = FindWords(i, j, target, directions);
                     if (matches > 0)
                     {
-                        Console.WriteLine($"Found {matches} matches for 'XMAS' starting at ({i}, {j})");
+                      //  Console.WriteLine($"Found {matches} matches for 'XMAS' starting at ({i}, {j})");
                         numFound += matches;
                     }
                 }
@@ -183,7 +183,7 @@ MXMXAXMASX";
                     var matches = FindMAS(i, j, directions);
                     if (matches.Count > 0)
                     {
-                        Console.WriteLine($"Found {matches} matches for 'XMAS' starting at ({i}, {j})");
+                       // Console.WriteLine($"Found {matches} matches for 'XMAS' starting at ({i}, {j})");
                         foundAs.AddRange(matches);
                     }
                 }
