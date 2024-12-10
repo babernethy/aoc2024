@@ -13,6 +13,6 @@
 //    Solver.Solve(indexes.Where(i => i < uint.MaxValue), new SolverConfiguration { ShowOverallResults = false, ClearConsole = false });
 //}
 
-var indexes = new List<uint>() { 9 };
+var indexes = new List<uint>() { 10 };
 
 Solver.Solve(indexes, new SolverConfiguration { ShowOverallResults = false, ClearConsole = false });
